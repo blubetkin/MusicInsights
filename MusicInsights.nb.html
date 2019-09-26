@@ -1754,18 +1754,82 @@ summary {
 <p>First, we need tidyverse to handle data importing and wrangling…</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcInRpZHl2ZXJzZVwiKVxubGlicmFyeShcInRpZHl2ZXJzZVwiKVxuXG5zdXJ2ZXkgPC0gcmVhZF9jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaW50cm9kc2NpL011c2ljU3VydmV5L21hc3Rlci9tdXNpYy1zdXJ2ZXkuY3N2XCIpXG5wcmVmZXJlbmNlcyA8LSByZWFkX2NzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9pbnRyb2RzY2kvTXVzaWNTdXJ2ZXkvbWFzdGVyL3ByZWZlcmVuY2VzLXN1cnZleS5jc3ZcIilcbnJvd3MgPC0gbnJvdyhzdXJ2ZXkpXG5jb2x1bW5zIDwtIGNvbG5hbWVzKHN1cnZleSlcbmBgYCJ9 -->
-<pre class="r"><code>install.packages(&quot;tidyverse&quot;)
-library(&quot;tidyverse&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5zdGFsbC5wYWNrYWdlcyhcInRpZHl2ZXJzZVwiKVxuYGBgIn0= -->
+<pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gaW5zdGFsbC5wYWNrYWdlcyA6IFVwZGF0aW5nIGxvYWRlZCBwYWNrYWdlc1xuIn0= -->
+<pre><code>Error in install.packages : Updating loaded packages</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShcInRpZHl2ZXJzZVwiKVxuXG5zdXJ2ZXkgPC0gcmVhZF9jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaW50cm9kc2NpL011c2ljU3VydmV5L21hc3Rlci9tdXNpYy1zdXJ2ZXkuY3N2XCIpXG5gYGAifQ== -->
+<pre class="r"><code>library(&quot;tidyverse&quot;)
 
-survey &lt;- read_csv(&quot;https://raw.githubusercontent.com/introdsci/MusicSurvey/master/music-survey.csv&quot;)
-preferences &lt;- read_csv(&quot;https://raw.githubusercontent.com/introdsci/MusicSurvey/master/preferences-survey.csv&quot;)
-rows &lt;- nrow(survey)
+survey &lt;- read_csv(&quot;https://raw.githubusercontent.com/introdsci/MusicSurvey/master/music-survey.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBUaW1lc3RhbXAgPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgYEZpcnN0LCB3ZSBhcmUgZ29pbmcgdG8gY3JlYXRlIGEgcHNldWRvbnltIGZvciB5b3UgdG8ga2VlcCB0aGlzIHN1cnZleSBhbm9ueW1vdXMgKG1vcmUgb3IgbGVzcykuIFdoaWNoIHBzZXVkb255bSBnZW5lcmF0b3Igd291bGQgeW91IHByZWZlcj9gID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIGBXaGF0IGlzIHlvdXIgcHNldWRvbnltP2AgPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgU2V4ID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIE1ham9yID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIGBBY2FkZW1pYyBZZWFyYCA9IFx1MDAxYlszMW1jb2xfY2hhcmFjdGVyKClcdTAwMWJbMzltLFxuICBgWWVhciB5b3Ugd2VyZSBib3JuIChZWVlZKWAgPSBcdTAwMWJbMzJtY29sX2RvdWJsZSgpXHUwMDFiWzM5bSxcbiAgYFdoaWNoIG11c2ljYWwgaW5zdHJ1bWVudHMvdGFsZW50cyBkbyB5b3UgcGxheT8gKFNlbGVjdCBhbGwgdGhhdCBhcHBseSlgID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIEFydGlzdCA9IFx1MDAxYlszMW1jb2xfY2hhcmFjdGVyKClcdTAwMWJbMzltLFxuICBTb25nID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIGBMaW5rIHRvIHNvbmcgKG9uIFlvdXR1YmUgb3IgVmltZW8pYCA9IFx1MDAxYlszMW1jb2xfY2hhcmFjdGVyKClcdTAwMWJbMzltXG4pXG4ifQ== -->
+<pre><code>Parsed with column specification:
+cols(
+  Timestamp = [31mcol_character()[39m,
+  `First, we are going to create a pseudonym for you to keep this survey anonymous (more or less). Which pseudonym generator would you prefer?` = [31mcol_character()[39m,
+  `What is your pseudonym?` = [31mcol_character()[39m,
+  Sex = [31mcol_character()[39m,
+  Major = [31mcol_character()[39m,
+  `Academic Year` = [31mcol_character()[39m,
+  `Year you were born (YYYY)` = [32mcol_double()[39m,
+  `Which musical instruments/talents do you play? (Select all that apply)` = [31mcol_character()[39m,
+  Artist = [31mcol_character()[39m,
+  Song = [31mcol_character()[39m,
+  `Link to song (on Youtube or Vimeo)` = [31mcol_character()[39m
+)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZmVyZW5jZXMgPC0gcmVhZF9jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaW50cm9kc2NpL011c2ljU3VydmV5L21hc3Rlci9wcmVmZXJlbmNlcy1zdXJ2ZXkuY3N2XCIpXG5gYGAifQ== -->
+<pre class="r"><code>preferences &lt;- read_csv(&quot;https://raw.githubusercontent.com/introdsci/MusicSurvey/master/preferences-survey.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICAuZGVmYXVsdCA9IGNvbF9kb3VibGUoKSxcbiAgVGltZXN0YW1wID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW0sXG4gIGBXaGF0IHdhcyB5b3VyIHBzZXVkb255bT9gID0gXHUwMDFiWzMxbWNvbF9jaGFyYWN0ZXIoKVx1MDAxYlszOW1cbilcblNlZSBzcGVjKC4uLikgZm9yIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb25zLlxuIn0= -->
+<pre><code>Parsed with column specification:
+cols(
+  .default = col_double(),
+  Timestamp = [31mcol_character()[39m,
+  `What was your pseudonym?` = [31mcol_character()[39m
+)
+See spec(...) for full column specifications.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm93cyA8LSBucm93KHN1cnZleSlcbmNvbHVtbnMgPC0gY29sbmFtZXMoc3VydmV5KVxuYGBgIn0= -->
+<pre class="r"><code>rows &lt;- nrow(survey)
 columns &lt;- colnames(survey)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Now let us rename the titles in survey:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sbmFtZXMoc3VydmV5KVtjb2xuYW1lcyhzdXJ2ZXkpID09IFwiVGltZXN0YW1wXCJdIDwtIFwidGltZV9zdWJtaXR0ZWRcIlxuY29sbmFtZXMoc3VydmV5KVtjb2xuYW1lcyhzdXJ2ZXkpID09IFwiRmlyc3QsIHdlIGFyZSBnb2luZyB0byBjcmVhdGUgYSBwc2V1ZG9ueW0gZm9yIHlvdSB0byBrZWVwIHRoaXMgc3VydmV5IGFub255bW91cyAobW9yZSBvciBsZXNzKS4gV2hpY2ggcHNldWRvbnltIGdlbmVyYXRvciB3b3VsZCB5b3UgcHJlZmVyP1wiXSA8LSBcInBzZXVkb255bV9nZW5lcmF0b3JcIlxuY29sbmFtZXMoc3VydmV5KVtjb2xuYW1lcyhzdXJ2ZXkpID09IFwiV2hhdCBpcyB5b3VyIHBzZXVkb255bT9cIl0gPC0gXCJwc2V1ZG9ueW1cIlxuY29sbmFtZXMoc3VydmV5KVtjb2xuYW1lcyhzdXJ2ZXkpID09IFwiU2V4XCJdIDwtIFwic2V4XCJcbmNvbG5hbWVzKHN1cnZleSlbY29sbmFtZXMoc3VydmV5KSA9PSBcIk1ham9yXCJdIDwtIFwiYWNhZGVtaWNfbWFqb3JcIlxuY29sbmFtZXMoc3VydmV5KVtjb2xuYW1lcyhzdXJ2ZXkpID09IFwiQWNhZGVtaWMgWWVhclwiXSA8LSBcImFjYWRlbWljX2xldmVsXCJcbmNvbG5hbWVzKHN1cnZleSlbY29sbmFtZXMoc3VydmV5KSA9PSBcIlllYXIgeW91IHdlcmUgYm9ybiAoWVlZWSlcIl0gPC0gXCJ5ZWFyX2Jvcm5cIlxuY29sbmFtZXMoc3VydmV5KVtjb2xuYW1lcyhzdXJ2ZXkpID09IFwiV2hpY2ggbXVzaWNhbCBpbnN0cnVtZW50cy90YWxlbnRzIGRvIHlvdSBwbGF5PyAoU2VsZWN0IGFsbCB0aGF0IGFwcGx5KVwiXSA8LSBcImluc3RydW1lbnRfbGlzdFwiXG5jb2xuYW1lcyhzdXJ2ZXkpW2NvbG5hbWVzKHN1cnZleSkgPT0gXCJBcnRpc3RcIl0gPC0gXCJmYXZvcml0ZV9zb25nX2FydGlzdFwiXG5jb2xuYW1lcyhzdXJ2ZXkpW2NvbG5hbWVzKHN1cnZleSkgPT0gXCJTb25nXCJdIDwtIFwiZmF2b3JpdGVfc29uZ1wiXG5jb2xuYW1lcyhzdXJ2ZXkpW2NvbG5hbWVzKHN1cnZleSkgPT0gXCJMaW5rIHRvIHNvbmcgKG9uIFlvdXR1YmUgb3IgVmltZW8pXCJdIDwtIFwiZmF2b3JpdGVfc29uZ19saW5rXCJcblxubGlicmFyeShcImRwbHllclwiKVxubGlicmFyeShcInRpZHlyXCIpXG5gYGAifQ== -->
+<pre class="r"><code>colnames(survey)[colnames(survey) == &quot;Timestamp&quot;] &lt;- &quot;time_submitted&quot;
+colnames(survey)[colnames(survey) == &quot;First, we are going to create a pseudonym for you to keep this survey anonymous (more or less). Which pseudonym generator would you prefer?&quot;] &lt;- &quot;pseudonym_generator&quot;
+colnames(survey)[colnames(survey) == &quot;What is your pseudonym?&quot;] &lt;- &quot;pseudonym&quot;
+colnames(survey)[colnames(survey) == &quot;Sex&quot;] &lt;- &quot;sex&quot;
+colnames(survey)[colnames(survey) == &quot;Major&quot;] &lt;- &quot;academic_major&quot;
+colnames(survey)[colnames(survey) == &quot;Academic Year&quot;] &lt;- &quot;academic_level&quot;
+colnames(survey)[colnames(survey) == &quot;Year you were born (YYYY)&quot;] &lt;- &quot;year_born&quot;
+colnames(survey)[colnames(survey) == &quot;Which musical instruments/talents do you play? (Select all that apply)&quot;] &lt;- &quot;instrument_list&quot;
+colnames(survey)[colnames(survey) == &quot;Artist&quot;] &lt;- &quot;favorite_song_artist&quot;
+colnames(survey)[colnames(survey) == &quot;Song&quot;] &lt;- &quot;favorite_song&quot;
+colnames(survey)[colnames(survey) == &quot;Link to song (on Youtube or Vimeo)&quot;] &lt;- &quot;favorite_song_link&quot;
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIk11c2ljIEluc2lnaHRzIg0KYXV0aG9yOiAiQmVuamFtaW4gTHViZXRraW4iDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpGaXJzdCwgd2UgbmVlZCB0aWR5dmVyc2UgdG8gaGFuZGxlIGRhdGEgaW1wb3J0aW5nIGFuZCB3cmFuZ2xpbmcuLi4NCg0KYGBge3J9DQppbnN0YWxsLnBhY2thZ2VzKCJ0aWR5dmVyc2UiKQ0KbGlicmFyeSgidGlkeXZlcnNlIikNCg0Kc3VydmV5IDwtIHJlYWRfY3N2KCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaW50cm9kc2NpL011c2ljU3VydmV5L21hc3Rlci9tdXNpYy1zdXJ2ZXkuY3N2IikNCnByZWZlcmVuY2VzIDwtIHJlYWRfY3N2KCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaW50cm9kc2NpL011c2ljU3VydmV5L21hc3Rlci9wcmVmZXJlbmNlcy1zdXJ2ZXkuY3N2IikNCnJvd3MgPC0gbnJvdyhzdXJ2ZXkpDQpjb2x1bW5zIDwtIGNvbG5hbWVzKHN1cnZleSkNCmBgYA0K</div>
+library(&quot;dplyer&quot;)
+library(&quot;tidyr&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Let’s create a person and a favorite song table:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRmF2b3JpdGUgPC0gdGliYmxlKHBzZXVkb255bSA9IHN1cnZleSRwc2V1ZG9ueW0sIHRpbWVfc3VibWl0dGVkID0gc3VydmV5JHRpbWVfc3VibWl0dGVkLCBmYXZvcml0ZV9zb25nX2FydGlzdCA9IHN1cnZleSRmYXZvcml0ZV9zb25nX2FydGlzdCwgZmF2b3JpdGVfc29uZyA9IHN1cnZleSRmYXZvcml0ZV9zb25nLCBmYXZvcml0ZV9zb25nX2xpbmsgPSBzdXJ2ZXkkZmF2b3JpdGVfc29uZ19saW5rKVxuXG5gYGAifQ== -->
+<pre class="r"><code>Favorite &lt;- tibble(pseudonym = survey$pseudonym, time_submitted = survey$time_submitted, favorite_song_artist = survey$favorite_song_artist, favorite_song = survey$favorite_song, favorite_song_link = survey$favorite_song_link)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIk11c2ljIEluc2lnaHRzIg0KYXV0aG9yOiAiQmVuamFtaW4gTHViZXRraW4iDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpGaXJzdCwgd2UgbmVlZCB0aWR5dmVyc2UgdG8gaGFuZGxlIGRhdGEgaW1wb3J0aW5nIGFuZCB3cmFuZ2xpbmcuLi4NCg0KYGBge3J9DQppbnN0YWxsLnBhY2thZ2VzKCJ0aWR5dmVyc2UiKQ0KbGlicmFyeSgidGlkeXZlcnNlIikNCg0Kc3VydmV5IDwtIHJlYWRfY3N2KCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaW50cm9kc2NpL011c2ljU3VydmV5L21hc3Rlci9tdXNpYy1zdXJ2ZXkuY3N2IikNCnByZWZlcmVuY2VzIDwtIHJlYWRfY3N2KCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vaW50cm9kc2NpL011c2ljU3VydmV5L21hc3Rlci9wcmVmZXJlbmNlcy1zdXJ2ZXkuY3N2IikNCnJvd3MgPC0gbnJvdyhzdXJ2ZXkpDQpjb2x1bW5zIDwtIGNvbG5hbWVzKHN1cnZleSkNCmBgYA0KTm93IGxldCB1cyByZW5hbWUgdGhlIHRpdGxlcyBpbiBzdXJ2ZXk6DQpgYGB7cn0NCmNvbG5hbWVzKHN1cnZleSlbY29sbmFtZXMoc3VydmV5KSA9PSAiVGltZXN0YW1wIl0gPC0gInRpbWVfc3VibWl0dGVkIg0KY29sbmFtZXMoc3VydmV5KVtjb2xuYW1lcyhzdXJ2ZXkpID09ICJGaXJzdCwgd2UgYXJlIGdvaW5nIHRvIGNyZWF0ZSBhIHBzZXVkb255bSBmb3IgeW91IHRvIGtlZXAgdGhpcyBzdXJ2ZXkgYW5vbnltb3VzIChtb3JlIG9yIGxlc3MpLiBXaGljaCBwc2V1ZG9ueW0gZ2VuZXJhdG9yIHdvdWxkIHlvdSBwcmVmZXI/Il0gPC0gInBzZXVkb255bV9nZW5lcmF0b3IiDQpjb2xuYW1lcyhzdXJ2ZXkpW2NvbG5hbWVzKHN1cnZleSkgPT0gIldoYXQgaXMgeW91ciBwc2V1ZG9ueW0/Il0gPC0gInBzZXVkb255bSINCmNvbG5hbWVzKHN1cnZleSlbY29sbmFtZXMoc3VydmV5KSA9PSAiU2V4Il0gPC0gInNleCINCmNvbG5hbWVzKHN1cnZleSlbY29sbmFtZXMoc3VydmV5KSA9PSAiTWFqb3IiXSA8LSAiYWNhZGVtaWNfbWFqb3IiDQpjb2xuYW1lcyhzdXJ2ZXkpW2NvbG5hbWVzKHN1cnZleSkgPT0gIkFjYWRlbWljIFllYXIiXSA8LSAiYWNhZGVtaWNfbGV2ZWwiDQpjb2xuYW1lcyhzdXJ2ZXkpW2NvbG5hbWVzKHN1cnZleSkgPT0gIlllYXIgeW91IHdlcmUgYm9ybiAoWVlZWSkiXSA8LSAieWVhcl9ib3JuIg0KY29sbmFtZXMoc3VydmV5KVtjb2xuYW1lcyhzdXJ2ZXkpID09ICJXaGljaCBtdXNpY2FsIGluc3RydW1lbnRzL3RhbGVudHMgZG8geW91IHBsYXk/IChTZWxlY3QgYWxsIHRoYXQgYXBwbHkpIl0gPC0gImluc3RydW1lbnRfbGlzdCINCmNvbG5hbWVzKHN1cnZleSlbY29sbmFtZXMoc3VydmV5KSA9PSAiQXJ0aXN0Il0gPC0gImZhdm9yaXRlX3NvbmdfYXJ0aXN0Ig0KY29sbmFtZXMoc3VydmV5KVtjb2xuYW1lcyhzdXJ2ZXkpID09ICJTb25nIl0gPC0gImZhdm9yaXRlX3NvbmciDQpjb2xuYW1lcyhzdXJ2ZXkpW2NvbG5hbWVzKHN1cnZleSkgPT0gIkxpbmsgdG8gc29uZyAob24gWW91dHViZSBvciBWaW1lbykiXSA8LSAiZmF2b3JpdGVfc29uZ19saW5rIg0KDQpsaWJyYXJ5KCJkcGx5ZXIiKQ0KbGlicmFyeSgidGlkeXIiKQ0KYGBgDQpMZXQncyBjcmVhdGUgYSBwZXJzb24gYW5kIGEgZmF2b3JpdGUgc29uZyB0YWJsZToNCmBgYHtyfQ0KRmF2b3JpdGUgPC0gdGliYmxlKHBzZXVkb255bSA9IHN1cnZleSRwc2V1ZG9ueW0sIHRpbWVfc3VibWl0dGVkID0gc3VydmV5JHRpbWVfc3VibWl0dGVkLCBmYXZvcml0ZV9zb25nX2FydGlzdCA9IHN1cnZleSRmYXZvcml0ZV9zb25nX2FydGlzdCwgZmF2b3JpdGVfc29uZyA9IHN1cnZleSRmYXZvcml0ZV9zb25nLCBmYXZvcml0ZV9zb25nX2xpbmsgPSBzdXJ2ZXkkZmF2b3JpdGVfc29uZ19saW5rKQ0KDQpgYGA=</div>
 
 
 
