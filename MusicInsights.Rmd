@@ -1,0 +1,17 @@
+---
+title: "Music Insights"
+author: "Benjamin Lubetkin"
+output: html_notebook
+---
+
+First, we need tidyverse to handle data importing and wrangling...
+
+```{r}
+install.packages("tidyverse")
+library("tidyverse")
+
+survey <- read_csv("https://raw.githubusercontent.com/introdsci/MusicSurvey/master/music-survey.csv")
+preferences <- read_csv("https://raw.githubusercontent.com/introdsci/MusicSurvey/master/preferences-survey.csv")
+rows <- nrow(survey)
+columns <- colnames(survey)
+```
