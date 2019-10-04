@@ -28,12 +28,18 @@ colnames(survey)[colnames(survey) == "Which musical instruments/talents do you p
 colnames(survey)[colnames(survey) == "Artist"] <- "favorite_song_artist"
 colnames(survey)[colnames(survey) == "Song"] <- "favorite_song"
 colnames(survey)[colnames(survey) == "Link to song (on Youtube or Vimeo)"] <- "favorite_song_link"
-
-library("dplyer")
+library("dplyr")
 library("tidyr")
 ```
-Let's create a person and a favorite song table:
+Let's create a person, a favorite song table and a ratings table:
 ```{r}
-Favorite <- tibble(pseudonym = survey$pseudonym, time_submitted = survey$time_submitted, favorite_song_artist = survey$favorite_song_artist, favorite_song = survey$favorite_song, favorite_song_link = survey$favorite_song_link)
-
+Favorite_Song <- tibble(pseudonym = survey$pseudonym, time_submitted = survey$time_submitted, favorite_song_artist = survey$favorite_song_artist, favorite_song = survey$favorite_song, favorite_song_link = survey$favorite_song_link)
+Person <- tibble(time_submitted = survey$time_submitted,pseudonym = survey$pseudonym, sex = survey$sex, academic_major =survey$academic_major, academic_level = survey$academic_level, year_born = survey$year_born, instrument_list = survey$instrument_list)
+Ratings <- gather(preferences, key = "artist_song", value = "Rating", 3:45)
+```
+Now, let us change the following to factors:
+```{r}
+Person$academic_major <- as.factor(Person$academic_major)
+Person$academic_level <- as.factor(Person$academic_level)
+levels(Person$academic_major)[levels(Person$academic_major) == "Computer information systems"] <- "Computer Information Systems"
 ```
