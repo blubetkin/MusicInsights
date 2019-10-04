@@ -35,7 +35,8 @@ Let's create a person, a favorite song table and a ratings table:
 ```{r}
 Favorite_Song <- tibble(pseudonym = survey$pseudonym, time_submitted = survey$time_submitted, favorite_song_artist = survey$favorite_song_artist, favorite_song = survey$favorite_song, favorite_song_link = survey$favorite_song_link)
 Person <- tibble(time_submitted = survey$time_submitted,pseudonym = survey$pseudonym, sex = survey$sex, academic_major =survey$academic_major, academic_level = survey$academic_level, year_born = survey$year_born, instrument_list = survey$instrument_list)
-Ratings <- gather(preferences, key = "artist_song", value = "Rating", 3:45)
+Preferences <- gather(preferences, key = "artist_song", value = "Rating", 3:45)
+Ratings <- tibble(pseudonym = Preferences$"What was your pseudonym?", artist_song = Preferences$artist_song, Ratings = Preferences$Rating)
 ```
 Now, let us change the following to factors:
 ```{r}
