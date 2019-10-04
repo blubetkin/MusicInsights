@@ -1,19 +1,24 @@
 ---
 title: "Music Insights"
 author: "Benjamin Lubetkin"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
 ---
 
 First, we need tidyverse to handle data importing and wrangling...
 
 ```{r}
-install.packages("tidyverse")
+install.packages("tidyverse", repos = "http://cran.us.r-project.org")
 library("tidyverse")
 
 survey <- read_csv("https://raw.githubusercontent.com/introdsci/MusicSurvey/master/music-survey.csv")
 preferences <- read_csv("https://raw.githubusercontent.com/introdsci/MusicSurvey/master/preferences-survey.csv")
 rows <- nrow(survey)
 columns <- colnames(survey)
+library("dplyr")
+library("tidyr")
 ```
 Now let us rename the titles in survey:
 ```{r}
@@ -28,8 +33,7 @@ colnames(survey)[colnames(survey) == "Which musical instruments/talents do you p
 colnames(survey)[colnames(survey) == "Artist"] <- "favorite_song_artist"
 colnames(survey)[colnames(survey) == "Song"] <- "favorite_song"
 colnames(survey)[colnames(survey) == "Link to song (on Youtube or Vimeo)"] <- "favorite_song_link"
-library("dplyr")
-library("tidyr")
+
 ```
 Let's create a person, a favorite song table and a ratings table:
 ```{r}
