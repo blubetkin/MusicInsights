@@ -1,6 +1,8 @@
 ---
 title: "Music Insights Regression"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 First, let's load in the other code from our previous MusicInsights.Rmd file:
 ```{r}
