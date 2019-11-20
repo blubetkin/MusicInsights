@@ -1,0 +1,32 @@
+---
+title: "Music Insights Regression"
+output: html_notebook
+---
+First, let's load in the other code from our previous MusicInsights.Rmd file:
+```{r}
+#install.packages("tidyverse")
+library("knitr")
+purl("MusicInsights.Rmd", output = "part1.r")
+source("part1.r")
+```
+Now, let's find out what the average rating was for a song from each person, we will have two extras from people who submitted twice. We will consider their first entries as the correct ones and delete the others. Finally we will add this variable "average_ratings" to the dataframe "Person":
+```{r}
+#average_ratings <- sapply(preferences$`What was your pseudonym?`, rowMeans()
+average_ratings <- rowMeans(preferences[, 3:45])
+print(average_ratings)
+average_ratings <- average_ratings[-c(23, 44)]
+Person <- add_column(Person, average_ratings)
+```
+Now we can begin our analysis! Let's install the "caret" library to create a test set and a train set. We will also set a seed so that the random collection of the sets will stay consistent:
+```{r}
+library(caret)
+set.seed(385)
+sample_selection <- createDataPartition(Person$average_ratings, p = 0.75, list = FALSE)
+train <- Person[sample_selection,]
+test <- Person[-sample_selection,]
+train_model <- lm(average_ratings ~ sex + academic_major + academic_level + year_born, data = train)
+predictions <- train_model %>% predict(test)
+summary(train_model)
+predictions
+```
+From this we can see that none of the factors will completely predict our model, in fact, our p-value is quite high, so unfortunatley we will not be able to get any predictors from this data.
