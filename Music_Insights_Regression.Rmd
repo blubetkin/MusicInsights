@@ -4,7 +4,7 @@ output:
   html_document:
     df_print: paged
 ---
-First, let's load in the other code from our previous MusicInsights.Rmd file:
+First, let's load in the other code from our previous MusicInsights.Rmd file if you do not have tidyverse installed run this code without the "#" in the first line:
 ```{r}
 #install.packages("tidyverse")
 library("knitr")
@@ -13,7 +13,6 @@ source("part1.r")
 ```
 Now, let's find out what the average rating was for a song from each person, we will have two extras from people who submitted twice. We will consider their first entries as the correct ones and delete the others. Finally we will add this variable "average_ratings" to the dataframe "Person":
 ```{r}
-#average_ratings <- sapply(preferences$`What was your pseudonym?`, rowMeans()
 average_ratings <- rowMeans(preferences[, 3:45])
 print(average_ratings)
 average_ratings <- average_ratings[-c(23, 44)]
